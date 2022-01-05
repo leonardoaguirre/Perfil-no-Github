@@ -12,7 +12,7 @@ const GitHubProvider = ({ children }) => {
     const [githubState, setGithubState] = useState({
         loading: false,
         hasUser: false,
-        userNotFound : false,
+        userNotFound: false,
         user: {
             id: undefined,
             avatar: undefined,
@@ -44,7 +44,7 @@ const GitHubProvider = ({ children }) => {
                     ...prevState,
                     loading: true,
                     hasUser: true,
-                    userNotFound : false,
+                    userNotFound: false,
                     user: {
                         id: data.id,
                         avatar: data.avatar_url,
@@ -66,7 +66,7 @@ const GitHubProvider = ({ children }) => {
             ({
                 ...prevState,
                 hasUser: false,
-                userNotFound : true,
+                userNotFound: true,
             })))
             .finally(() => {
                 setGithubState((prevState) => ({
@@ -76,10 +76,44 @@ const GitHubProvider = ({ children }) => {
                 )
             })
     }
+
+    const getUserRepos = (username) => {
+        setGithubState((prevState) => ({
+            ...prevState,
+            loading: !prevState.loading,
+        }));
+
+        api.get(`users/${username}/repos`)
+            .then(({ data }) =>
+                setGithubState((prevState) => ({
+                    ...prevState,
+                    repositories: data,
+                })
+                ))
+    }
+
+    const getUserStarred = (username) => {
+        setGithubState((prevState) => ({
+            ...prevState,
+            loading: !prevState.loading,
+        }));
+
+        api.get(`users/${username}/starred`)
+            .then(({ data }) =>
+                setGithubState((prevState) => ({
+                    ...prevState,
+                    starred: data,
+                })
+                ))
+    }
+
     const ContextValue = {
         githubState,
         getUser: useCallback((username) => getUser(username), []),
+        getUserRepos: useCallback((username) => getUserRepos(username), []),
+        getUserStarred: useCallback((username) => getUserStarred(username), []),
     }
+
     return (
         <GithubContext.Provider value={ContextValue}>
             {children}
