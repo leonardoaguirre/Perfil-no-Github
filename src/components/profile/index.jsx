@@ -7,21 +7,42 @@ const Profile = () => {
 
     return (
         <S.Wrapper>
-            <S.WrapperImg>
-                <img src="" alt="Imagem do usuario" />
-            </S.WrapperImg>
+            <S.WrapperImg src={githubState.user.avatar} alt="Imagem do usuario" />
             <S.WrapperInfoUser>
                 <div>
                     <div>
                         <h1>{githubState.user.name}</h1>
-                        <S.WrapperUserName>
-                            <h3>Username :</h3>
-                            <a href={githubState.user.html_Url}
+                        <S.WrapperUserGeneric>
+                            <h3>Nome de Usuário:</h3>
+                            <a href={githubState.user.html_url}
                                 target={"_blank"}
                                 rel="noreferrer">
                                 <span>{githubState.user.login}</span>
                             </a>
-                        </S.WrapperUserName>
+                        </S.WrapperUserGeneric>
+                        <S.WrapperUserGeneric>
+                            <h3>Empresa:</h3>
+                            <span>{githubState.user.company ? githubState.user.company : '...'}</span>
+                        </S.WrapperUserGeneric>
+                        <S.WrapperUserGeneric>
+                            <h3>Localidade:</h3>
+                            <span>{githubState.user.location ? githubState.user.location : "..."}</span>
+                        </S.WrapperUserGeneric>
+                        <S.WrapperUserGeneric>
+                            <h3>Blog:</h3>
+                            {githubState.user.blog ?
+                                <a href={githubState.user.blog}
+                                    target={"_blank"}
+                                    rel="noreferrer">
+                                    <span>{githubState.user.blog}</span>
+                                </a>
+                                : "..."}
+
+                        </S.WrapperUserGeneric>
+                        <S.WrapperUserGeneric>
+                            <h3>Ingressou no Github em:</h3>
+                            <span>{new Date(githubState.user.created_at).toLocaleDateString()}</span>
+                        </S.WrapperUserGeneric>
                     </div>
                     <S.WrapperStatusCount>
                         <div>
@@ -37,7 +58,7 @@ const Profile = () => {
                             <span>{githubState.user.public_gists}</span>
                         </div>
                         <div>
-                            <h4>Repos</h4>
+                            <h4>Repostórios</h4>
                             <span>{githubState.user.public_repos}</span>
                         </div>
                     </S.WrapperStatusCount>

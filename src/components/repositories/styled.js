@@ -27,7 +27,7 @@ z-index : 99999;
 background-color : #fff;
 margin : 8px;
 
-&.focus{
+&:focus{
     outline : none;
 
 }

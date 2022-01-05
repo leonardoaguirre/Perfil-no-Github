@@ -7,8 +7,12 @@ align-item : flex-start;
 export const WrapperStatusCount = styled.div `
 display : flex;
 align-item : center;
+div {
+    margin: 8px;
+    text-align: center;
+}
 `;
-export const WrapperUserName = styled.div `
+export const WrapperUserGeneric = styled.div `
 display : flex;
 align-item : center;
 margin-top : 8px;
@@ -21,10 +25,10 @@ a{
     font-size : 18px
 }
 `;
-export const WrapperImg = styled.div `
-border-radius: 50%;
-width : 200px;
-margin : 8px;
+export const WrapperImg = styled.img `
+    border-radius: 50%;
+    width: 200px;
+    margin: 8px;
 `;
 export const WrapperInfoUser = styled.div `
 display : flex;
