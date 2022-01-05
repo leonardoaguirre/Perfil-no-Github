@@ -6,6 +6,7 @@ const Header = () => {
     const { getUser } = useGithub();
     const [search, setSearch] = useState();
     const [error, setError] = useState('');
+    const { githubState } = useGithub();
 
     const submitGetUser = (e) => {
         e.preventDefault();
@@ -27,7 +28,9 @@ const Header = () => {
                     </button>
                 </form>
             </S.Wrapper>
+            {githubState.loading && (<p>Loading....</p>)}
             <S.msgError>
+                {githubState.userNotFound && (<p>Nenhum usuário foi encontrado</p>)}
                 {error ? <p>{error}</p> : ``}
             </S.msgError>
         </header>
