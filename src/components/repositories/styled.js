@@ -14,7 +14,7 @@ padding : 4px;
 display : flex;
 margin : 0;
 `;
-WrapperTabList.tabsRole = 'Tablist';
+WrapperTabList.tabsRole = "TabList";
 
 export const WrapperTab = styled(Tab)
 `
@@ -35,16 +35,27 @@ margin : 8px;
     box-shadow : 3px 2px 10px rgba(0,0,0,0.2);
 }
 `;
-WrapperTabList.tabsRole = 'Tab';
+WrapperTab.tabsRole = "Tab";
+
 export const WrapperTabPanel = styled(TabPanel)
 `
-padding : 16px;
-display : none;
-border : 1px solid #ccc;
-margin-top : -5px;
+padding: 16px;
+border: 1px solid "#ccc";
+margin-top: -5px;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: flex-start;
+align-content: center;
+align-items: center;
 
-&.is-selected{
-    display : block;
+&.is-selected {
+    display: flex;
 }
 `;
-WrapperTabList.tabsRole = 'TabPanel';
+WrapperTabPanel.tabsRole = "TabPanel";
+
+export const WrapperList = styled.div `
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+`;
