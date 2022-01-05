@@ -28,7 +28,7 @@ const Repositories = () => {
                         </S.WrapperTabList>
                         <S.WrapperList>
                             <S.WrapperTabPanel>
-                                {githubState.repositories.lenght > 0 ?
+                                {githubState.repositories.length > 0 ?
                                     githubState.repositories.map((item, key) =>
                                     (<RepositoryItem
                                         key={key}
@@ -42,7 +42,7 @@ const Repositories = () => {
                         </S.WrapperList>
                         <S.WrapperList>
                             <S.WrapperTabPanel>
-                                {githubState.starred.lenght > 0 ?
+                                {githubState.starred.length > 0 ?
                                     githubState.starred.map((item, key) =>
                                     (<RepositoryItem
                                         key={key}
